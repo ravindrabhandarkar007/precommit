@@ -22,3 +22,28 @@ repos:
     - id: check-merge-conflict
     - id: check-yaml
     - id: detect-private-key
+    - id: end-of-file-fixer
+    - id: fix-byte-order-marker
+    - id: mixed-line-ending
+    - id: requirements-txt-fixer
+
+    # Add Roslyn Analyzers and StyleCop checks
+    - id: roslyn-analyzers
+      name: Roslyn Analyzers
+      entry: dotnet
+      args:
+        - build
+        - --no-restore
+        - /p:TreatWarningsAsErrors=true
+        - /p:RunAnalyzersDuringBuild=true
+
+    - id: stylecop
+      name: StyleCop
+      entry: dotnet
+      args:
+        - build
+        - --no-restore
+        - /p:TreatWarningsAsErrors=true
+        - /p:RunAnalyzersDuringBuild=true
+        - /p:AnalyzeStyleCop=true
+
